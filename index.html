@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Normovací Tabulka pro Kuchaře</title>
+     <link rel="icon" href="R.png" type="image/x-icon">
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: #f2f2f2;
+        }
+
+
+
+                 img{
+
+margin-left: 0px;
+margin-right:1300px
+
+}
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #53515170;
+            color: rgb(0, 0, 0);
+        }
+
+        #inputForm {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px auto;
+            width: 60%;
+            background-color: #f8f8f8;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #vysledky {
+            margin-top: 20px;
+        }
+
+        /* Nový nadpis nad tisknutém formulářem */
+        #printHeader {
+            font-size: 15px;
+            color: black;
+        }
+
+        @media print {
+            body {
+                text-align: center;
+                margin: 0;
+            }
+
+            h1,
+            #inputForm,
+            label,
+            input,
+            button {
+                display: none;
+            }
+
+            table {
+                margin: 0 auto;
+                width: 100%;
+            }
+
+            th, td {
+                border: 1px solid #000;
+            }
+
+            th {
+                background-color: #53515170;
+                color: rgb(0, 0, 0);
+            }
+
+            /* Zobrazíme nový nadpis nad tisknutém formulářem */
+            #printHeader {
+                display: block;
+                color: black;
+                font-size: 15px;
+            }
+            
+            #techpostup {
+                color: black;
+.left-aligned {
+            float: left; /* Align the image to the left */
+            margin-right: 10px; /* Add some margin to create space between the image and text */
+        }            }
+       
+
+ }
+
+    </style>
+ 
+</head>
+
+<body>
+
+   
+ <h1>Normovací Tabulka pro Kuchaře</h1>
+
+    <div id="inputForm">
+        <label for="nazevPokrmu">Název pokrmu:</label>
+        <input type="text" id="nazevPokrmu">
+
+        <label for="surovina">Název suroviny:</label>
+        <input type="text" id="surovina">
+
+        <label for="mnozstvi">Množství:</label>
+        <input type="number" id="mnozstvi">
+
+        <button onclick="pridejSurovinu()">Přidat surovinu</button>
+    </div>
+
+    <label for="pocetPorci">Počet porcí:</label>
+    <input type="number" id="pocetPorci">
+
+    <button onclick="vypoctiTabulku()">Vypočítat</button>
+
+    <button onclick="tiskniTabulku()">Tisknout Tabulku</button>
+
+    <table id="nazev">
+        <thead>
+            <tr>
+                <th>
+                    <!-- Nový nadpis nad tisknutém formulářem -->
+                    <h1 id="printHeader">Váš větší nadpis zde</h1>
+                </th>
+                <th>
+                    Číslo normi: <input type="number" id="cisloNormi" style="width: 50px; background-color: #96959570;">
+                </th>
+            </tr>
+        </thead>
+    </table>
+    <table id="tabulka">
+        <thead>
+            <tr>
+                <th>Surovina</th>
+                <th>Množství</th>
+                <th>1 Porce</th>
+                <th data-porcí="4">Norma na:</th>
+            </tr>
+        </thead>
+        <tbody id="tabulkaTelo">
+            <!-- Sem budou přidány suroviny -->
+        </tbody>
+    </table>
+
+    <div id="vysledky">
+        <!-- Sem budou zobrazeny výsledky výpočtu -->
+    </div>
+
+
+    <script>
+        let suroviny = [];
+
+        function pridejSurovinu() {
+            const nazevPokrmu = document.getElementById("nazevPokrmu").value;
+            const surovina = document.getElementById("surovina").value;
+            const mnozstvi = parseFloat(document.getElementById("mnozstvi").value);
+
+            if (nazevPokrmu && surovina && !isNaN(mnozstvi)) {
+                suroviny.push({
+                    nazevPokrmu,
+                    surovina,
+                    mnozstvi
+                });
+                // Aktualizace nového nadpisu nad tisknutém formulářem
+                document.getElementById("printHeader").textContent = nazevPokrmu;
+                obnovTabulku();
+                document.getElementById("surovina").value = "";
+                document.getElementById("mnozstvi").value = "";
+            }
+        }
+
+        function obnovTabulku() {
+            const tabulkaTelo = document.getElementById("tabulkaTelo");
+            tabulkaTelo.innerHTML = "";
+
+            const pocetPorci = parseInt(document.getElementById("pocetPorci").value);
+
+            suroviny.forEach((surovina, index) => {
+                const row = document.createElement("tr");
+                const surovinaCell = document.createElement("td");
+                const mnozstviCell = document.createElement("td");
+                const porcecell = document.createElement("td")
+                const normaCell = document.createElement("td");
+
+                surovinaCell.textContent = surovina.surovina;
+                mnozstviCell.textContent = surovina.mnozstvi;
+
+                // Zkontrolujeme, zda je množství platným číslem a aktualizujeme "Norma na porci"
+                if (!isNaN(pocetPorci) && !isNaN(surovina.mnozstvi)) {
+                    const normaNaPorci = (surovina.mnozstvi / 10) * pocetPorci;
+                    normaCell.textContent = normaNaPorci.toFixed(2);
+                    tabulkaTelo.setAttribute("data-porcí", pocetPorci);
+                } else {
+                    normaCell.textContent = "X";
+                }
+                if (!isNaN(pocetPorci) && !isNaN(surovina.mnozstvi)) {
+                    const normaNaPorci = (surovina.mnozstvi / 10);
+                    porcecell.textContent = normaNaPorci.toFixed(2);
+                    tabulkaTelo.setAttribute("data-porcí", pocetPorci);
+                }
+
+                row.appendChild(surovinaCell);
+                row.appendChild(mnozstviCell);
+                row.appendChild(porcecell)
+                row.appendChild(normaCell);
+                tabulkaTelo.appendChild(row);
+            });
+
+            // Aktualizace nadpisu Norma na porci
+            const thNorma = document.querySelector('th[data-porcí="4"]');
+            thNorma.textContent = `Norma na ${pocetPorci} porcí:`;
+        }
+
+        function vypoctiTabulku() {
+            obnovTabulku();
+            // Uložíme hodnotu pole "Počet porcí" pro zachování
+            const pocetPorci = document.getElementById("pocetPorci").value;
+            localStorage.setItem("pocetPorci", pocetPorci);
+        }
+
+        function tiskniTabulku() {
+            window.print();
+        }
+
+        // Obnovení hodnoty pole "Počet porcí" při načtení stránky
+        const savedPocetPorci = localStorage.getItem("pocetPorci");
+        if (savedPocetPorci) {
+            document.getElementById("pocetPorci").value = savedPocetPorci;
+        }
+    </script>
+</body>
+
+</html>
