@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
-
+ 
 <head>
     <meta charset="UTF-8">
     <title>Normovací Tabulka pro Kuchaře</title>
      <link rel="icon" href="R.png" type="image/x-icon">
+
 <style>
         body {
             font-family: Arial, sans-serif;
@@ -93,7 +94,12 @@ margin-right:1300px
         }
 
         @media print {
-            body {
+            footer {
+                display: none;
+            }
+            
+
+body {
                 text-align: center;
                 margin: 0;
             }
@@ -138,7 +144,7 @@ margin-right:1300px
  }
 
     </style>
- 
+
 </head>
 
 <body>
@@ -196,7 +202,9 @@ margin-right:1300px
     <div id="vysledky">
         <!-- Sem budou zobrazeny výsledky výpočtu -->
     </div>
-
+ <footer>
+        <p>&copy; Milan Kutílek. Všechna práva vyhrazena.</p>
+    </footer>
 
     <script>
         let suroviny = [];
@@ -280,5 +288,6 @@ margin-right:1300px
         }
     </script>
 </body>
+
 
 </html>
