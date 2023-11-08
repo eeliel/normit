@@ -23,6 +23,7 @@
         border-collapse: collapse;
         width: 80%;
         background-color: #fff; /* Bílá pozadí pro tabulku */
+
     }
 
     img {
@@ -32,30 +33,42 @@
 
     table, th, td {
         border: 1px solid #ccc;
-    }
+    
+}
 
     th, td {
         padding: 12px;
         text-align: left;
-    }
+
+}
 
     th {
         background-color: #53515170;
         color: #000;
+
     }
+#pocetPorci {
+width: 60%;
+
+
+}
+
 
     #inputForm {
         border: 1px solid #ccc;
         padding: 20px;
+padding-right: 40px;
         margin: 20px auto;
         width: 60%;
         background-color: #f8f8f8;
+border-radius: 10px;
     }
 
     label {
         display: block;
         margin-bottom: 8px;
         font-weight: bold;
+
     }
 
     input[type="text"],
@@ -64,6 +77,7 @@
         padding: 8px;
         margin-bottom: 16px;
         border: 1px solid #ccc;
+border-radius: 5px;
     }
 
     button {
@@ -89,6 +103,9 @@
         font-size: 15px;
         color: #000;
     }
+button{
+border-radius: 5px;
+}
 
     @media print {
         footer {
@@ -157,14 +174,15 @@
 
         <button onclick="pridejSurovinu()">Přidat surovinu</button>
     </div>
-
+<div>
     <label for="pocetPorci">Počet porcí:</label>
-    <input type="number" id="pocetPorci">
-
+    <input type="number" id="pocetPorci"> 
+</div>
+<div>
     <button onclick="vypoctiTabulku()">Vypočítat</button>
 
     <button onclick="tiskniTabulku()">Tisknout Tabulku</button>
-
+</div>
     <table id="nazev">
         <thead>
             <tr>
@@ -173,7 +191,7 @@
                     <h1 id="printHeader">Váš větší nadpis zde</h1>
                 </th>
                 <th>
-                    Číslo normi: <input type="number" id="cisloNormi" style="width: 50px; background-color: #96959570;">
+                    Číslo normi: 
                 </th>
             </tr>
         </thead>
