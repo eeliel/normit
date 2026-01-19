@@ -1,138 +1,42 @@
 <!DOCTYPE html>
 <html>
- 
 <head>
     <meta charset="UTF-8">
     <title>Normovací Tabulka pro Kuchaře</title>
-     <link rel="icon" href="R.png" type="image/x-icon">
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#000000">
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        margin: 20px;
-        background-color: #f2f2f2;
-    }
-
-    h1 {
-        color: #333;
-    }
-
-    table {
-        margin: 0 auto;
-        border-collapse: collapse;
-        width: 80%;
-        background-color: #fff; /* Bílá pozadí pro tabulku */
-
-    }
-
-    img {
-        margin-left: 0;
-        margin-right: 1300px;
-    }
-
-    table, th, td {
-        border: 1px solid #ccc;
-    
-}
-
-    th, td {
-        padding: 12px;
-        text-align: left;
-
-}
-
-    th {
-        background-color: #53515170;
-        color: #000;
-
-    }
-#pocetPorci {
-width: 60%;
-
-
-}
-
-
-    #inputForm {
-        border: 1px solid #ccc;
-        padding: 20px;
-padding-right: 40px;
-        margin: 20px auto;
-        width: 60%;
-        background-color: #f8f8f8;
-border-radius: 10px;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: bold;
-
-    }
-
-    input[type="text"],
-    input[type="number"] {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 16px;
-        border: 1px solid #ccc;
-border-radius: 5px;
-    }
-
-    button {
-        background-color: #4CAF50;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-        background-color: #45a049;
-    }
-
-    #vysledky {
-        margin-top: 20px;
-    }
-
-    /* Nový nadpis nad tisknutým formulářem */
-    #printHeader {
-        font-size: 15px;
-        color: #000;
-    }
-button{
-border-radius: 5px;
-}
-
-    @media print {
-        footer {
-            display: none;
-        }
-
+    <link rel="icon" href="R.png" type="image/x-icon">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#000000">
+    <style>
         body {
+            font-family: Arial, sans-serif;
             text-align: center;
-            margin: 0;
+            margin: 20px;
+            background-color: #f2f2f2;
         }
 
-        h1,
-        #inputForm,
-        label,
-        input,
-        button {
-            display: none;
+        h1 {
+            color: #333;
         }
 
         table {
             margin: 0 auto;
-            width: 100%;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: #fff;
+        }
+
+        img {
+            margin-left: 0;
+            margin-right: 1300px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
         }
 
         th, td {
-            border: 1px solid #000;
+            padding: 12px;
+            text-align: left;
         }
 
         th {
@@ -140,59 +44,284 @@ border-radius: 5px;
             color: #000;
         }
 
-        /* Zobrazíme nový nadpis nad tisknutým formulářem */
-        #printHeader {
-            display: block;
+        #pocetPorci {
+            width: 60%;
         }
 
-        #techpostup {
+        #inputForm {
+            border: 1px solid #ccc;
+            padding: 20px;
+            padding-right: 40px;
+            margin: 20px auto;
+            width: 60%;
+            background-color: #f8f8f8;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+            margin: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #vysledky {
+            margin-top: 20px;
+        }
+
+        .helper-text {
+            font-size: 13px;
+            color: #555;
+            margin-top: -10px;
+            margin-bottom: 12px;
+        }
+
+        .grid-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            align-items: end;
+        }
+
+        .section-title {
+            margin-top: 8px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .draft-list {
+            width: 60%;
+            margin: 0 auto 20px;
+            text-align: left;
+            background: #fff;
+            border-radius: 10px;
+            padding: 12px 20px;
+            border: 1px solid #ccc;
+        }
+
+        .draft-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .draft-list li {
+            padding: 6px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .draft-list li:last-child {
+            border-bottom: none;
+        }
+
+        .controls {
+            width: 60%;
+            margin: 0 auto 20px;
+        }
+
+        .controls select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .import-box {
+            width: 60%;
+            margin: 0 auto 20px;
+            text-align: left;
+            background: #fff;
+            border-radius: 10px;
+            padding: 12px 20px;
+            border: 1px solid #ccc;
+        }
+
+        .import-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .postup-box {
+            width: 80%;
+            margin: 20px auto 0;
+            text-align: left;
+            background: #fff;
+            border-radius: 10px;
+            padding: 12px 20px;
+            border: 1px solid #ccc;
+        }
+
+        /* Nový nadpis nad tisknutým formulářem */
+        #printHeader {
+            font-size: 15px;
             color: #000;
         }
 
-        .left-aligned {
-            float: left;
-            margin-right: 10px;
+        @media print {
+            footer {
+                display: none;
+            }
+
+            body {
+                text-align: center;
+                margin: 0;
+            }
+
+            h1,
+            #inputForm,
+            .draft-list,
+            .controls,
+            .import-box,
+            .postup-box,
+            label,
+            input,
+            button {
+                display: none;
+            }
+
+            table {
+                margin: 0 auto;
+                width: 100%;
+            }
+
+            th, td {
+                border: 1px solid #000;
+            }
+
+            th {
+                background-color: #53515170;
+                color: #000;
+            }
+
+            /* Zobrazíme nový nadpis nad tisknutým formulářem */
+            #printHeader {
+                display: block;
+            }
+
+            #techpostup {
+                color: #000;
+            }
+
+            .left-aligned {
+                float: left;
+                margin-right: 10px;
+            }
         }
-    }
-</style>
-
+    </style>
 </head>
-
 <body>
-
-   
- <h1>Normovací Tabulka pro Kuchaře</h1>
+    <h1>Normovací Tabulka pro Kuchaře</h1>
 
     <div id="inputForm">
+        <div class="section-title">Vytvoření receptu z učebnice</div>
         <label for="nazevPokrmu">Název pokrmu:</label>
-        <input type="text" id="nazevPokrmu">
+        <input type="text" id="nazevPokrmu" placeholder="Např. Kuřecí na paprice">
 
-        <label for="surovina">Název suroviny:</label>
-        <input type="text" id="surovina">
+        <div class="grid-row">
+            <div>
+                <label for="surovina">Název suroviny:</label>
+                <input type="text" id="surovina" placeholder="Např. kuřecí maso">
+            </div>
+            <div>
+                <label for="mnozstvi">Množství na 10 porcí:</label>
+                <input type="number" id="mnozstvi" step="0.01" placeholder="Např. 1500">
+            </div>
+            <div>
+                <label for="jednotka">Jednotka:</label>
+                <input type="text" id="jednotka" placeholder="g, kg, ml">
+            </div>
+        </div>
+        <label for="postup">Technologický postup:</label>
+        <textarea id="postup" placeholder="Krátký technologický postup k receptu."></textarea>
+        <div class="helper-text">Zadejte suroviny z textového dokumentu. Všechny hodnoty se ukládají jako norma na 10 porcí.</div>
 
-        <label for="mnozstvi">Množství:</label>
-        <input type="number" id="mnozstvi">
-
-        <button onclick="pridejSurovinu()">Přidat surovinu</button>
+        <button type="button" onclick="pridejSurovinu()">Přidat surovinu do receptu</button>
+        <button type="button" onclick="ulozRecept()">Uložit recept do databáze</button>
+        <button type="button" onclick="vycistiRecept()">Vyčistit rozepsaný recept</button>
     </div>
-<div>
-    <label for="pocetPorci">Počet porcí:</label>
-    <input type="number" id="pocetPorci"> 
-</div>
-<div>
-    <button onclick="vypoctiTabulku()">Vypočítat</button>
 
-    <button onclick="tiskniTabulku()">Tisknout Tabulku</button>
-</div>
+    <div class="draft-list" id="draftList">
+        <strong>Rozpracované suroviny:</strong>
+        <ul id="draftItems">
+            <li>Zatím žádné suroviny.</li>
+        </ul>
+    </div>
+
+    <div class="controls">
+        <div class="section-title">Databáze receptů</div>
+        <label for="vyhledavani">Vyhledat recept:</label>
+        <input type="text" id="vyhledavani" placeholder="Začněte psát název receptu" oninput="filtrujRecepty()">
+
+        <label for="recepty">Vyberte recept:</label>
+        <select id="recepty" onchange="zobrazRecept()"></select>
+    </div>
+
+    <div class="import-box">
+        <div class="section-title">Import seznamu receptur (TXT)</div>
+        <label for="importUrl">Načíst TXT z URL (např. GitHub raw odkaz):</label>
+        <input type="text" id="importUrl" placeholder="https://raw.githubusercontent.com/.../recepty.txt">
+        <label for="importText">Vložte textový seznam receptur:</label>
+        <textarea id="importText" placeholder="Vložte sem text se seznamem receptur z učebnice."></textarea>
+        <div class="helper-text">Import doplní názvy a čísla receptur do databáze (bez surovin). Suroviny a postup pak doplníte u vybraného receptu.</div>
+        <div class="import-actions">
+            <button type="button" onclick="nactiUrlImport()">Načíst z URL</button>
+            <button type="button" onclick="importujSeznam()">Načíst seznam receptur</button>
+            <button type="button" onclick="vymazSeznam()">Vymazat databázi receptur</button>
+        </div>
+    </div>
+
+    <div>
+        <label for="pocetPorci">Počet porcí:</label>
+        <input type="number" id="pocetPorci" min="1" value="10" oninput="aktualizujTabulku()">
+    </div>
+    <div>
+        <button type="button" onclick="tiskniTabulku()">Tisknout Tabulku</button>
+    </div>
+
     <table id="nazev">
         <thead>
             <tr>
                 <th>
-                    <!-- Nový nadpis nad tisknutém formulářem -->
-                    <h1 id="printHeader">Váš větší nadpis zde</h1>
+                    <h1 id="printHeader">Vybraný recept</h1>
                 </th>
                 <th>
-                    Číslo normy: 
+                    Číslo normy: <span id="cisloNormy">-</span>
                 </th>
             </tr>
         </thead>
@@ -201,115 +330,353 @@ border-radius: 5px;
         <thead>
             <tr>
                 <th>Surovina</th>
-                <th>Množství</th>
-                <th>1 Porce</th>
-                <th data-porcí="4">Norma na:</th>
+                <th>Množství na 10 porcí</th>
+                <th id="porceHeader">Množství na 10 porcí</th>
+                <th>Jednotka</th>
             </tr>
         </thead>
         <tbody id="tabulkaTelo">
-            <!-- Sem budou přidány suroviny -->
+            <tr>
+                <td colspan="4">Vyberte recept z databáze.</td>
+            </tr>
         </tbody>
     </table>
 
-    <div id="vysledky">
-        <!-- Sem budou zobrazeny výsledky výpočtu -->
+    <div class="postup-box" id="postupBox">
+        <strong>Technologický postup:</strong>
+        <p id="postupText">Vyberte recept z databáze.</p>
     </div>
- <footer>
+
+    <div id="vysledky"></div>
+
+    <footer>
         <p>&copy; Milan Kutílek. Všechna práva vyhrazena.</p>
     </footer>
 
     <script>
         let suroviny = [];
+        let recepty = [];
+        let vybranyRecept = null;
+
+        const receptySelect = document.getElementById("recepty");
+        const tabulkaTelo = document.getElementById("tabulkaTelo");
+        const porceHeader = document.getElementById("porceHeader");
+        const cisloNormySpan = document.getElementById("cisloNormy");
+        const postupText = document.getElementById("postupText");
+
+        function nactiRecepty() {
+            const ulozene = localStorage.getItem("recepty");
+            recepty = ulozene ? JSON.parse(ulozene) : [];
+            recepty = recepty.map((recept) => ({
+                suroviny: [],
+                postup: "",
+                cisloNormy: "",
+                ...recept
+            }));
+        }
+
+        function ulozRecepty() {
+            localStorage.setItem("recepty", JSON.stringify(recepty));
+        }
 
         function pridejSurovinu() {
-            const nazevPokrmu = document.getElementById("nazevPokrmu").value;
-            const surovina = document.getElementById("surovina").value;
+            const surovina = document.getElementById("surovina").value.trim();
             const mnozstvi = parseFloat(document.getElementById("mnozstvi").value);
+            const jednotka = document.getElementById("jednotka").value.trim();
 
-            if (nazevPokrmu && surovina && !isNaN(mnozstvi)) {
+            if (surovina && !isNaN(mnozstvi) && jednotka) {
                 suroviny.push({
-                    nazevPokrmu,
                     surovina,
-                    mnozstvi
+                    mnozstvi,
+                    jednotka
                 });
-                // Aktualizace nového nadpisu nad tisknutém formulářem
-                document.getElementById("printHeader").textContent = nazevPokrmu;
-                obnovTabulku();
+                dokumentujRozpis();
                 document.getElementById("surovina").value = "";
                 document.getElementById("mnozstvi").value = "";
+                document.getElementById("jednotka").value = "";
             }
         }
 
-        function obnovTabulku() {
-            const tabulkaTelo = document.getElementById("tabulkaTelo");
+        function dokumentujRozpis() {
+            const draftItems = document.getElementById("draftItems");
+            draftItems.innerHTML = "";
+
+            if (suroviny.length === 0) {
+                const empty = document.createElement("li");
+                empty.textContent = "Zatím žádné suroviny.";
+                draftItems.appendChild(empty);
+                return;
+            }
+
+            suroviny.forEach((item) => {
+                const li = document.createElement("li");
+                li.textContent = `${item.surovina} – ${item.mnozstvi} ${item.jednotka} na 10 porcí`;
+                draftItems.appendChild(li);
+            });
+        }
+
+        function ulozRecept() {
+            const nazevPokrmu = document.getElementById("nazevPokrmu").value.trim();
+            const postup = document.getElementById("postup").value.trim();
+            if (!nazevPokrmu || suroviny.length === 0) {
+                return;
+            }
+
+            const existujiciIndex = recepty.findIndex((recept) => recept.nazevPokrmu.toLowerCase() === nazevPokrmu.toLowerCase());
+            const novyRecept = {
+                nazevPokrmu,
+                suroviny: [...suroviny],
+                postup,
+                cisloNormy: vybranyRecept?.cisloNormy || ""
+            };
+
+            if (existujiciIndex >= 0) {
+                recepty[existujiciIndex] = novyRecept;
+            } else {
+                recepty.push(novyRecept);
+            }
+
+            ulozRecepty();
+            suroviny = [];
+            dokumentujRozpis();
+            document.getElementById("nazevPokrmu").value = "";
+            document.getElementById("postup").value = "";
+            filtrujRecepty();
+        }
+
+        function vycistiRecept() {
+            suroviny = [];
+            dokumentujRozpis();
+            document.getElementById("surovina").value = "";
+            document.getElementById("mnozstvi").value = "";
+            document.getElementById("jednotka").value = "";
+            document.getElementById("postup").value = "";
+        }
+
+        function ocistiNazev(nazev) {
+            return nazev
+                .replace(/\s+/g, " ")
+                .replace(/["“”]/g, "")
+                .trim();
+        }
+
+        function extrahujReceptyZTextu(text) {
+            const receptyZTextu = [];
+            const radky = text.split(/\r?\n/);
+            const regex = /([0-9][0-9A-Z\/.\-]*)\s+([^0-9]{2,}?)(?=\s{2,}\d+|\s{2,}[0-9][0-9A-Z\/.\-]*|\s*$)/g;
+
+            radky.forEach((radek) => {
+                let match;
+                while ((match = regex.exec(radek)) !== null) {
+                    const cislo = match[1].trim();
+                    let nazev = match[2];
+                    nazev = nazev.replace(/\s+\d+\s*$/, "");
+                    nazev = ocistiNazev(nazev);
+                    if (cislo && nazev.length > 1) {
+                        receptyZTextu.push({
+                            nazevPokrmu: nazev,
+                            cisloNormy: cislo,
+                            suroviny: [],
+                            postup: ""
+                        });
+                    }
+                }
+            });
+
+            return receptyZTextu;
+        }
+
+        function importujSeznam() {
+            const text = document.getElementById("importText").value.trim();
+            if (!text) {
+                return;
+            }
+
+            const importovane = extrahujReceptyZTextu(text);
+            sloucitImportovane(importovane);
+        }
+
+        function sloucitImportovane(importovane) {
+            importovane.forEach((novyRecept) => {
+                const existujici = recepty.find((recept) =>
+                    recept.cisloNormy === novyRecept.cisloNormy ||
+                    recept.nazevPokrmu.toLowerCase() === novyRecept.nazevPokrmu.toLowerCase()
+                );
+                if (!existujici) {
+                    recepty.push(novyRecept);
+                } else if (!existujici.cisloNormy) {
+                    existujici.cisloNormy = novyRecept.cisloNormy;
+                }
+            });
+
+            ulozRecepty();
+            filtrujRecepty();
+        }
+
+        function nactiUrlImport() {
+            const url = document.getElementById("importUrl").value.trim();
+            if (!url) {
+                return;
+            }
+
+            fetch(url)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error("Nepodařilo se stáhnout soubor.");
+                    }
+                    return response.text();
+                })
+                .then((text) => {
+                    document.getElementById("importText").value = text;
+                    const importovane = extrahujReceptyZTextu(text);
+                    sloucitImportovane(importovane);
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+
+        function vymazSeznam() {
+            recepty = [];
+            vybranyRecept = null;
+            ulozRecepty();
+            filtrujRecepty();
+            aktualizujTabulku();
+        }
+
+        function filtrujRecepty() {
+            const dotaz = document.getElementById("vyhledavani").value.trim().toLowerCase();
+            receptySelect.innerHTML = "";
+
+            const filtrovane = recepty.filter((recept) => recept.nazevPokrmu.toLowerCase().includes(dotaz));
+
+            if (filtrovane.length === 0) {
+                const option = document.createElement("option");
+                option.textContent = "Žádný recept nenalezen";
+                option.value = "";
+                receptySelect.appendChild(option);
+                vybranyRecept = null;
+                aktualizujTabulku();
+                cisloNormySpan.textContent = "-";
+                postupText.textContent = "Vyberte recept z databáze.";
+                return;
+            }
+
+            filtrovane.forEach((recept, index) => {
+                const option = document.createElement("option");
+                option.value = recept.nazevPokrmu;
+                option.textContent = recept.nazevPokrmu;
+                if (index === 0) {
+                    option.selected = true;
+                }
+                receptySelect.appendChild(option);
+            });
+
+            vybranyRecept = filtrovane[0];
+            aktualizujTabulku();
+        }
+
+        function zobrazRecept() {
+            const selectedName = receptySelect.value;
+            vybranyRecept = recepty.find((recept) => recept.nazevPokrmu === selectedName) || null;
+            if (vybranyRecept) {
+                document.getElementById("nazevPokrmu").value = vybranyRecept.nazevPokrmu;
+                document.getElementById("postup").value = vybranyRecept.postup || "";
+            }
+            aktualizujTabulku();
+        }
+
+        function aktualizujTabulku() {
             tabulkaTelo.innerHTML = "";
+            const pocetPorci = parseFloat(document.getElementById("pocetPorci").value);
+            const pocet = !isNaN(pocetPorci) && pocetPorci > 0 ? pocetPorci : 10;
 
-            const pocetPorci = parseInt(document.getElementById("pocetPorci").value);
+            porceHeader.textContent = `Množství na ${pocet} porcí`;
 
-            suroviny.forEach((surovina, index) => {
+            if (!vybranyRecept) {
+                const row = document.createElement("tr");
+                const cell = document.createElement("td");
+                cell.colSpan = 4;
+                cell.textContent = "Vyberte recept z databáze.";
+                row.appendChild(cell);
+                tabulkaTelo.appendChild(row);
+                document.getElementById("printHeader").textContent = "Vybraný recept";
+                cisloNormySpan.textContent = "-";
+                postupText.textContent = "Vyberte recept z databáze.";
+                return;
+            }
+
+            document.getElementById("printHeader").textContent = vybranyRecept.nazevPokrmu;
+            cisloNormySpan.textContent = vybranyRecept.cisloNormy || "-";
+            postupText.textContent = vybranyRecept.postup || "Postup nebyl zatím zadán.";
+            localStorage.setItem("vybranyRecept", vybranyRecept.nazevPokrmu);
+            localStorage.setItem("pocetPorci", pocet);
+
+            if (!vybranyRecept.suroviny || vybranyRecept.suroviny.length === 0) {
+                const row = document.createElement("tr");
+                const cell = document.createElement("td");
+                cell.colSpan = 4;
+                cell.textContent = "Recept nemá zadané suroviny.";
+                row.appendChild(cell);
+                tabulkaTelo.appendChild(row);
+                return;
+            }
+
+            vybranyRecept.suroviny.forEach((polozka) => {
                 const row = document.createElement("tr");
                 const surovinaCell = document.createElement("td");
                 const mnozstviCell = document.createElement("td");
-                const porcecell = document.createElement("td")
                 const normaCell = document.createElement("td");
+                const jednotkaCell = document.createElement("td");
 
-                surovinaCell.textContent = surovina.surovina;
-                mnozstviCell.textContent = surovina.mnozstvi;
+                surovinaCell.textContent = polozka.surovina;
+                mnozstviCell.textContent = polozka.mnozstvi.toFixed(2);
 
-                // Zkontrolujeme, zda je množství platným číslem a aktualizujeme "Norma na porci"
-                if (!isNaN(pocetPorci) && !isNaN(surovina.mnozstvi)) {
-                    const normaNaPorci = (surovina.mnozstvi / 10) * pocetPorci;
-                    normaCell.textContent = normaNaPorci.toFixed(2);
-                    tabulkaTelo.setAttribute("data-porcí", pocetPorci);
-                } else {
-                    normaCell.textContent = "X";
-                }
-                if (!isNaN(pocetPorci) && !isNaN(surovina.mnozstvi)) {
-                    const normaNaPorci = (surovina.mnozstvi / 10);
-                    porcecell.textContent = normaNaPorci.toFixed(2);
-                    tabulkaTelo.setAttribute("data-porcí", pocetPorci);
-                }
+                const normaNaPorci = (polozka.mnozstvi / 10) * pocet;
+                normaCell.textContent = normaNaPorci.toFixed(2);
+                jednotkaCell.textContent = polozka.jednotka;
 
                 row.appendChild(surovinaCell);
                 row.appendChild(mnozstviCell);
-                row.appendChild(porcecell)
                 row.appendChild(normaCell);
+                row.appendChild(jednotkaCell);
                 tabulkaTelo.appendChild(row);
             });
-
-            // Aktualizace nadpisu Norma na porci
-            const thNorma = document.querySelector('th[data-porcí="4"]');
-            thNorma.textContent = `Norma na ${pocetPorci} porcí:`;
-        }
-
-        function vypoctiTabulku() {
-            obnovTabulku();
-            // Uložíme hodnotu pole "Počet porcí" pro zachování
-            const pocetPorci = document.getElementById("pocetPorci").value;
-            localStorage.setItem("pocetPorci", pocetPorci);
         }
 
         function tiskniTabulku() {
             window.print();
         }
 
-        // Obnovení hodnoty pole "Počet porcí" při načtení stránky
+        nactiRecepty();
+        filtrujRecepty();
+
         const savedPocetPorci = localStorage.getItem("pocetPorci");
         if (savedPocetPorci) {
             document.getElementById("pocetPorci").value = savedPocetPorci;
         }
-     if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then((registration) => {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      }, (error) => {
-        console.log('ServiceWorker registration failed: ', error);
-      });
-  });
-     }
+
+        const ulozenyRecept = localStorage.getItem("vybranyRecept");
+        if (ulozenyRecept) {
+            vybranyRecept = recepty.find((recept) => recept.nazevPokrmu === ulozenyRecept) || null;
+            if (vybranyRecept) {
+                receptySelect.value = ulozenyRecept;
+                document.getElementById("nazevPokrmu").value = vybranyRecept.nazevPokrmu;
+                document.getElementById("postup").value = vybranyRecept.postup || "";
+                aktualizujTabulku();
+            }
+        }
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then((registration) => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    }, (error) => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
     </script>
 </body>
-
-
 </html>
