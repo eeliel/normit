@@ -582,6 +582,8 @@
             if (vybranyRecept) {
                 document.getElementById("nazevPokrmu").value = vybranyRecept.nazevPokrmu;
                 document.getElementById("postup").value = vybranyRecept.postup || "";
+                suroviny = [...(vybranyRecept.suroviny || [])];
+                dokumentujRozpis();
             }
             aktualizujTabulku();
         }
@@ -616,7 +618,7 @@
                 const row = document.createElement("tr");
                 const cell = document.createElement("td");
                 cell.colSpan = 4;
-                cell.textContent = "Recept nemá zadané suroviny.";
+                cell.textContent = "Recept nemá zadané suroviny. Přidejte je nahoře a uložte recept.";
                 row.appendChild(cell);
                 tabulkaTelo.appendChild(row);
                 return;
@@ -663,6 +665,8 @@
                 receptySelect.value = ulozenyRecept;
                 document.getElementById("nazevPokrmu").value = vybranyRecept.nazevPokrmu;
                 document.getElementById("postup").value = vybranyRecept.postup || "";
+                suroviny = [...(vybranyRecept.suroviny || [])];
+                dokumentujRozpis();
                 aktualizujTabulku();
             }
         }
